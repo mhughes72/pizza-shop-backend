@@ -9,10 +9,9 @@ const Specials = require("./models/specials");
 const Toppings = require("./models/toppings");
 
 const app = express();
-
 mongoose
   .connect(
-    "mongodb+srv://mhughes:7ant147H@mattcluster-crvln.mongodb.net/meanstackpizza?retryWrites=true&w=majority"
+    "mongodb+srv://mhughes:" + process.env.MONGO_ATLAS_PW + "@mattcluster-crvln.mongodb.net/meanstackpizza?retryWrites=true&w=majority"
   )
   .then(() => {
 
@@ -26,21 +25,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  // res.setHeader(
-  //   "Access-Control-Allow-Headers",
-  //   "Origin, X-Requested-With, Content-Type, Accept"
-  // );
-  res.header("Access-Control-Allow-Headers", 'Authorization, Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-
-
-
-
-
-
   res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
   );
+
+
   next();
 });
 
