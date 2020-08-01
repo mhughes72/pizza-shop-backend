@@ -8,16 +8,19 @@ const Sides = require("./models/sides");
 const Specials = require("./models/specials");
 const Toppings = require("./models/toppings");
 
+var cors = require('cors');
+
 const app = express();
+
 mongoose
   .connect(
-    "mongodb+srv://mhughes:" + process.env.MONGO_ATLAS_PW + "@mattcluster-crvln.mongodb.net/meanstackpizza?retryWrites=true&w=majority"
+    // "mongodb+srv://mhughes:" + process.env.MONGO_ATLAS_PW + "@mattcluster-crvln.mongodb.net/meanstackpizza?retryWrites=true&w=majority"
+
+    "mongodb+srv://mhughes:7ant147H@mattcluster-crvln.mongodb.net/meanstackpizza?retryWrites=true&w=majority"
   )
   .then(() => {
-
   })
-  .catch(() => {
-
+  .catch((e) => {
   });
 
 app.use(bodyParser.json());
