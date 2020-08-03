@@ -9,6 +9,7 @@ const Specials = require("./models/specials");
 const Toppings = require("./models/toppings");
 
 var cors = require('cors');
+const { resolve } = require("path");
 
 const app = express();
 
@@ -45,14 +46,12 @@ app.post("/api/pizza", (req, res, next) => {
     description: req.body.description,
     imagePath: req.body.imagePath,
     toppings: req.body.toppings,
-
     calories: req.body.calories,
     fat: req.body.fat,
     transfat: req.body.transfat,
     sodium: req.body.sodium,
     price: req.body.price,
-
-
+    toppings: req.body.toppings,
 
   });
 
@@ -82,22 +81,21 @@ app.delete("/api/posts/:id", (req, res, next) => {
 
 app.post("/api/salad", (req, res, next) => {
 
-  //
   const salad = new Salad({
 
     name: req.body.name,
     subName: req.body.subName,
     description: req.body.description,
     imagePath: req.body.imagePath,
-
     calories: req.body.calories,
     fat: req.body.fat,
     transfat: req.body.transfat,
     sodium: req.body.sodium,
-    price: req.body.price
-
+    price: req.body.price,
+    toppings: req.body.toppings,
 
   });
+
 
   salad.save().then(createdSalad => {
     res.status(201).json({
